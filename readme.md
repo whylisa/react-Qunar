@@ -4,7 +4,7 @@
 ## 基础概念
   - context(上下文)
     - 提供了一种方式，能够让数据在组件树种传递，而不必一级一级手动传递
-    - createContext()
+    - createContext(args) 默认值的使用场景就是Consumer找不到Provider的时候(可以注释掉Provider,Consumer的值就是参数值)
   - ContextType
   - lazy
   - Suspense
