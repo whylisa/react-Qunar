@@ -1,22 +1,13 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useState,useContext} from 'react';
 import './App.css';
-const BatterContext = createContext()
+const BatterContext = createContext(100)
 const OnlineContext = createContext()
 
 function Leaf() {
+  const  contextType = useContext(BatterContext)
+  console.log(contextType) 
   return (
-    <BatterContext.Consumer>
-
-        {
-          battery => (
-            <OnlineContext.Consumer>
-              {
-                (online) => <h1> Battery: {battery},Online: {String(online)}</h1>
-              }
-            </OnlineContext.Consumer>
-          )
-        }
-    </BatterContext.Consumer>
+         <h1> Battery: {contextType}</h1>
   )
 }
 function Middle() {
@@ -26,20 +17,15 @@ function Middle() {
 }
 function App() {
   const [battery,setBattery] = useState(60)
-  const [online, setOnline] = useState(false)
   return (
     <BatterContext.Provider value={battery}>
-      <OnlineContext.Provider value={online}>
       <button type="button" onClick={()=> {
         // let a = battery -1
         setBattery(battery -1)
-        setOnline(!online)
       }}>
       -1
       </button>
         <Middle></Middle>
-      </OnlineContext.Provider>
-
       </BatterContext.Provider>
   );
 }
