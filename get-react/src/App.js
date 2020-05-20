@@ -1,12 +1,25 @@
-import React, { lazy,Suspense }from 'react';
+import React, { memo, useState  }from 'react';
 import './App.css';
-const About = lazy(() => import('./about.js'))
-// Error Boundary
-function App() {
+const About = memo(function About({age}) {
+  console.log('foese')
   return (
-     <Suspense fallback={<div>loding</div>}>
-       <About></About>
-     </Suspense>
+  <div>{age}</div>
+  )
+})
+let id = 0
+function App() {
+  const [states,setStates] = useState(20)
+   id += 1
+   if(id === 1) {
+     useState('1l')
+   }
+  return (
+    <>
+    <button type="button" onClick={() => {
+      setStates(states-1)
+    }}>-1</button>
+       <About age={states}></About>
+       </>
   )
 }
 

@@ -16,5 +16,35 @@
        <About></About>
      </Suspense>
     ```
-  - memo
+  - memo 优化，例如，渲染子组件改变，不需要父组件重新渲染
+  ```js
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextProps.name === this.props.name) {
+            return false
+        }
+        return true
+    }
+    或者使用PureComponent 有局限性：只有传入的props第一级发生变化，才会去触发重新渲染，很容易触发视图不更新的bug
+
+    //无状态组件
+    const About = memo(function About({age}) {
+    console.log('foee')
+     return (
+     <div>{age}</div>
+      )
+     })
+  ```
+## react Hooks
+  - 类组件的不足
+    - 缺少复用机制
+    - 渲染属性和高阶组件导致层级冗余
+    - 生命周期混杂不相干逻辑
+    - 相干逻辑分散在不同声明周期
+    - this指向困扰
+  - hooks优势
+    - 函数组件无this问题
+    - 自定义Hooks方便复用逻辑
+    - 副作用的关注点分离
+  - useState
+    - 
     
