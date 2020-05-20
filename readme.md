@@ -46,5 +46,13 @@
     - 自定义Hooks方便复用逻辑
     - 副作用的关注点分离
   - useState
-    - 
+    - 每次按照稳定的顺序和数量进行调用的
+    - eslint-plugin-react-hooks -D 
+    - 传入函数，延迟初始化
+  - useEffect
+    - render->useEffect 在每次渲染之后调用
+    - 代表：componentDidMount,componentDidUpdate,componentWillUnmount
+    -  Clean Callback清除上一次副作用遗留下来的状态
+    - 第一个参数是函数，第二个是更新的状态（优化性能）
+    - 给一个数组，每一项都不变的情况下，useEffect才会不重新执行
     
