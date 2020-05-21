@@ -1,4 +1,4 @@
-import React, { useMemo, useState  }from 'react';
+import React, { useMemo, useState ,useRef}from 'react';
 import './App.css';
 function About({age}) {
   console.log('foese')
@@ -12,11 +12,16 @@ function App() {
   const doubles = useMemo(() => {
      return states * 2
   },[states])
+  const dataRef = useRef(null)
+  const onBtm = () => {
+    console.log(dataRef.current)
+  }
   return (
     <>
     <button type="button" onClick={() => {
       setStates(states-1)
     }}>-1{doubles}</button>
+    <input ref={dataRef} type="input" onClick={onBtm} /> 
        <About age={states}></About>
        </>
   )
