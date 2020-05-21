@@ -1,23 +1,22 @@
-import React, { memo, useState  }from 'react';
+import React, { useMemo, useState  }from 'react';
 import './App.css';
-const About = memo(function About({age}) {
+function About({age}) {
   console.log('foese')
   return (
   <div>{age}</div>
   )
-})
+}
 let id = 0
 function App() {
   const [states,setStates] = useState(20)
-   id += 1
-   if(id === 1) {
-     useState('1l')
-   }
+  const doubles = useMemo(() => {
+     return states * 2
+  },[states])
   return (
     <>
     <button type="button" onClick={() => {
       setStates(states-1)
-    }}>-1</button>
+    }}>-1{doubles}</button>
        <About age={states}></About>
        </>
   )

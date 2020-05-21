@@ -55,4 +55,15 @@
     -  Clean Callback清除上一次副作用遗留下来的状态
     - 第一个参数是函数，第二个是更新的状态（优化性能）
     - 给一个数组，每一项都不变的情况下，useEffect才会不重新执行
+  - useContext
+    - consumer
+    - 摒弃contextType 的缺点，对数量都没有限制
+  - useMemo
+    - 性能优化时使用
+    - 策略和useEffect一样，时机有区别
+    ```js
+      
+    ```
+    - 如果useMemo返回的是一个函数，就等价于useCallback
+    - 可以根据指定的依赖是否重新执行
     
