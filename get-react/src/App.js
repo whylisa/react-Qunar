@@ -14,14 +14,16 @@ function App() {
   },[states])
   const dataRef = useRef(null)
   const onBtm = () => {
-    console.log(dataRef.current)
+    console.log(dataRef.current.dataset.dd)
+    
   }
   return (
     <>
     <button type="button" onClick={() => {
       setStates(states-1)
+      onBtm()
     }}>-1{doubles}</button>
-    <input ref={dataRef} type="input" onClick={onBtm} /> 
+    <input ref={dataRef} data-dd={1} type="input" /> 
        <About age={states}></About>
        </>
   )
